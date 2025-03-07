@@ -18,18 +18,18 @@ app.use(cors({ origin: "http://localhost:3000", credentials: true }));
 app.use(express.json());
 app.use('/uploads', express.static('uploads')); // Serve profile pictures
 
-// Database Connection
-mongoose.connect(process.env.MONGO_URI, {  
+// Database Connection 
+mongoose.connect(process.env.MONGO_URI||'mongodb+srv://palujjwal1112:UJJWAL123@hrms.fhn5p.mongodb.net/?retryWrites=true&w=majority&appName=HRMS', {  
     useNewUrlParser: true,
-    useUnifiedTopology: true,
+    useUnifiedTopology: true, 
 })    
 .then(() => console.log('MongoDB Connected'))
 .catch(err => console.error(err)); 
 
-// Routes
+// Routes 
 app.use("/api/employees", employeeRoutes); 
 app.use("/api/attendance", attendanceRoutes);
-
+ 
  
 app.use("/api/leave", leaveRoutes);
 app.use("/api/payroll",payrollRoutes);
