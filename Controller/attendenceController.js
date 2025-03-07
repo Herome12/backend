@@ -15,11 +15,14 @@ exports.checkIn = async (req, res) => {
         if (!employee) return res.status(404).json({ error: "Employee not found" });
 
         const now = new Date();
+        now.setHours(now.getHours() + 5); // Convert UTC to IST
+        now.setMinutes(now.getMinutes() + 30); // Adjust for IST
+
         const hours = now.getHours();
 
-        // ✅ Validate Check-In Time
+        // ✅ Validate Check-In Time (Now using IST)
         if (hours < WORK_START_HOUR || hours >= WORK_END_HOUR) {
-            return res.status(400).json({ error: "Check-in only allowed during working hours (9 AM - 6 PM)" });
+            return res.status(400).json({ error: "Check-in only allowed during working hours (9 AM - 6 PM IST)" });
         }
 
         // ✅ Prevent multiple check-ins without checkout
@@ -27,7 +30,7 @@ exports.checkIn = async (req, res) => {
         if (existingAttendance) {
             return res.status(400).json({ error: "You have already checked in. Please check out first." });
         }
- 
+
         // ✅ Save Check-In Record
         const newAttendance = new Attendance({ employee: employeeId, checkInTime: now });
         await newAttendance.save();
