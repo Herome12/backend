@@ -26,7 +26,7 @@ mongoose.connect(process.env.MONGO_URI||'mongodb+srv://palujjwal1112:UJJWAL123@h
 .then(() => console.log('MongoDB Connected'))
 .catch(err => console.error(err)); 
 
-// Routes 
+// Routes  
 app.use("/api/employees", employeeRoutes); 
 app.use("/api/attendance", attendanceRoutes);
  
