@@ -10,7 +10,7 @@ const payrollRoutes = require("./routes/payrollRoutes")
 const cookieParser = require("cookie-parser");
 
 const app = express();
-
+      
 // Middleware 
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
@@ -19,18 +19,18 @@ app.use(express.json());
 app.use('/uploads', express.static('uploads')); // Serve profile pictures
 
 // Database Connection
-mongoose.connect(process.env.MONGO_URI, {
+mongoose.connect(process.env.MONGO_URI, {  
     useNewUrlParser: true,
     useUnifiedTopology: true,
-})
+})    
 .then(() => console.log('MongoDB Connected'))
 .catch(err => console.error(err)); 
 
 // Routes
-app.use("/api/employees", employeeRoutes);
+app.use("/api/employees", employeeRoutes); 
 app.use("/api/attendance", attendanceRoutes);
 
-
+ 
 app.use("/api/leave", leaveRoutes);
 app.use("/api/payroll",payrollRoutes);
 
