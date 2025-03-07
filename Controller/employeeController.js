@@ -3,30 +3,30 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
 // Ensure a default HR user exists
-    // const createAdmin = async () => {
+    const createAdmin = async () => {
 
 
-    //     const admin = new Employee({
-    //         name: "Default HR",
-    //         contact: "9876543210",
-    //         email: "admin11111@company.com",
-    //         password:"ujjwal", // Correctly hashed password
-    //         aadhaar: "12314511612321789012",
-    //         pan: "ABCDE12111121234F",
-    //         accountNumber: "12341567890",
-    //         ifscCode: "SBIN0001234",
-    //         emergencyContact: "9876543211",
-    //         address: "Head Office",
-    //         profilePicture: "",
-    //         role: "HR",
-    //     });
+        const admin = new Employee({
+            name: "Default HR",
+            contact: "9876543210",
+            email: "admin11111@company.com",
+            password:"ujjwal", // Correctly hashed password
+            aadhaar: "12314511612321789012",
+            pan: "ABCDE12111121234F",
+            accountNumber: "12341567890",
+            ifscCode: "SBIN0001234",
+            emergencyContact: "9876543211",
+            address: "Head Office",
+            profilePicture: "",
+            role: "HR",
+        });
 
-    //     await admin.save();
-    //     console.log("✅ Admin HR created successfully!");
+        await admin.save();
+        console.log("✅ Admin HR created successfully!");
         
-    // };
+    };
 
-    // createAdmin();
+    createAdmin();
 // Create Employee
 exports.createEmployee = async (req, res) => {
     try {
